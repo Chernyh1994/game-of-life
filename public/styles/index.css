@@ -1,0 +1,19 @@
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10px, 1fr));
+}
+
+.cell {
+    background: beige;
+    border: solid 1px gainsboro;
+    width: 5px;
+    height: 5px;
+}
+
+.cell:hover {
+    background: bisque;
+}
+
+.cell--life {
+    background: black;
+}
