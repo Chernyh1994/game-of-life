@@ -1,13 +1,43 @@
-#game-board {
+main {
+    padding: 15px;
+    background-color: lightgrey;
+}
+
+.title-wrap {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.title {
+    margin: 0 auto;
+    color: dimgrey;
+    font-family: cursive;
+}
+
+.container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(10px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 15px;
+}
+
+#board {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.control-panel {
+    grid-column-start: 4;
+    grid-column-end: 4;
+}
+
+.game-board {
+    background-color: lightslategrey;
+    border-spacing: 1px;
 }
 
 .cell {
-    background: beige;
-    border: solid 1px gainsboro;
-    width: 5px;
-    height: 5px;
+    width: 10px;
+    height: 10px;
 }
 
 .cell:hover {
@@ -15,5 +45,9 @@
 }
 
 .cell--life {
-    background: black;
+    background: green;
+}
+
+.cell--die {
+    background: beige;
 }

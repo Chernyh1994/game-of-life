@@ -1,14 +1,6 @@
-const boardTag = document.getElementById('game-board');
-const cellNumbers = 20000;
+import GameBoard from './game-board';
 
-for (let i = 0; i < cellNumbers; i++) {
-  const cellTag = document.createElement('div');
-  cellTag.classList.add('cell');
-  cellTag.setAttribute('data-id', `${i}`);
-  boardTag.appendChild(cellTag);
-}
+const boardTag = document.getElementById('board');
+const board = new GameBoard(boardTag, 50, 100);
 
-boardTag.addEventListener('click', (e) => {
-  e.target.classList.add('cell--life');
-  console.log('---------------------->', e.target);
-});
+board.drawGameBoard();
