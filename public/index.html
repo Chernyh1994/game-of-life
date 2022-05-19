@@ -4,28 +4,29 @@
         <link rel="stylesheet" href="styles/index.css">
         <meta charset="UTF-8">
         <script src="dist/bundle.js" defer></script>
-        <title>The Game of Life</title>
+        <title>The Game of Life.</title>
     </head>
     <body>
-        <main>
-            <div class="title-wrap">
+        <main class="container">
+            <div class="wrap-title">
                 <h1 class="title">The Game of Life.</h1>
             </div>
-            <div class="container">
-                <div id="board"></div>
-                <div id="control-panel">
-                    <div class="score-wrap">
-                        <p>Score: <span>1000</span></p>
+            <div class="board">
+                <div id="game-board" class="game-board"></div>
+                <div class="panel-board">
+                    <div class="game-score">
+                        <p class="game-score__title">Life cells:<span id="score-life-cell">1000</span></p>
+                        <p class="game-score__title">Dead cells:<span id="score-dead-cell">1000</span></p>
                     </div>
-                    <div class="button-container">
-                        <div class="button-wrap">
-                            <button class="button button--start">Start</button>
+                    <div class="btn-panel">
+                        <div class="wrap-btn">
+                            <button id="btn-start-stop" data-status="start" class="btn">Start</button>
                         </div>
-                        <div class="button-wrap">
-                            <button class="button button--stop">Stop</button>
+                        <div class="wrap-btn">
+                            <button id="btn-clear" class="btn">Clear</button>
                         </div>
-                        <div class="button-wrap">
-                            <button class="button button--random">Random</button>
+                        <div class="wrap-btn">
+                            <button id="btn-random" class="btn">Random</button>
                         </div>
                     </div>
                 </div>

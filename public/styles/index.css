@@ -1,53 +1,95 @@
-main {
+.container {
     padding: 15px;
     background-color: lightgrey;
 }
-
-.title-wrap {
+.wrap-title {
     text-align: center;
     margin-bottom: 15px;
 }
-
 .title {
     margin: 0 auto;
     color: dimgrey;
     font-family: cursive;
 }
-
-.container {
+.board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 15px;
 }
-
-#board {
+.game-board {
     grid-column-start: 1;
     grid-column-end: 4;
 }
-
-.control-panel {
-    grid-column-start: 4;
-    grid-column-end: 4;
+.game-board table {
+    background-color: darkgrey;
+    border-spacing: 0;
+    border: solid 2px #545454;
+    border-radius: 4px;
 }
-
-.game-board {
-    background-color: lightslategrey;
-    border-spacing: 1px;
-}
-
-.cell {
+.game-board td {
     width: 10px;
     height: 10px;
+    cursor: pointer;
+    border-radius: 2px;
+    border: solid 1px dimgrey;
 }
-
-.cell:hover {
-    background: bisque;
+.game-board .dead:hover {
+    background: slategray;
 }
-
-.cell--life {
+.game-board .life:hover {
     background: green;
 }
-
-.cell--die {
-    background: beige;
+.life {
+    background-color: darkgreen;
+    -webkit-transition: background-color 500ms ease-out;
+    -moz-transition: background-color 500ms ease-out;
+    -o-transition: background-color 500ms ease-out;
+    transition: background-color 500ms ease-out;
 }
+.dead {
+    background: #aeb2ae;
+    -webkit-transition: background-color 500ms ease-out;
+    -moz-transition: background-color 500ms ease-out;
+    -o-transition: background-color 500ms ease-out;
+    transition: background-color 500ms ease-out;
+}
+.panel-board {
+    grid-column-start: 4;
+    grid-column-end: 4;
+    padding: 0 15px;
+}
+.game-score {
+    margin: 5px 0;
+}
+.game-score__title {
+    margin: 5px 0 auto;
+    color: dimgray;
+    font-family: cursive;
+    font-weight: 600;
+}
+.btn-panel {
+    display: flex;
+}
+.wrap-btn {
+    padding: 5px;
+}
+.btn {
+    border: none;
+    padding: 10px 25px;
+    border-radius: 12px;
+    font-size: unset;
+    font-family: cursive;
+    color: aliceblue;
+    background-color: darkslategray;
+    box-shadow: 1px 3px #888888;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #325d5d
+}
+.btn:active {
+    background-color: #3e8e41;
+    box-shadow: 1px 2px #838282;
+    transform: translateY(1px);
+}
+
