@@ -1,6 +1,9 @@
-import GameBoard from './game-board';
+import GameBoardSizeDto from './dto/game-board-size.dto';
+import GameBoardService from './services/game-board.service';
+import GameBoardDraw from './draws/game-board.draw';
 
-const boardTag = document.getElementById('board');
-const board = new GameBoard(boardTag, 50, 100);
+const dtoSizeGameBoard = new GameBoardSizeDto(45, 100);
+const gameBoardService = new GameBoardService(dtoSizeGameBoard);
+const gameBoardDraw = new GameBoardDraw(gameBoardService);
 
-board.drawGameBoard();
+gameBoardDraw.initGame();
