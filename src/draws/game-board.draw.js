@@ -51,9 +51,13 @@ class GameBoardDraw {
       try {
         const { target } = event;
         const cellStatus = target.getAttribute('data-cell');
-        const rowIndex = target.getAttribute('data-row');
-        const colIndex = target.getAttribute('data-colum');
-        const dtoCell = new CellInformationDto(rowIndex, colIndex, target);
+        const indexRow = target.getAttribute('data-row');
+        const indexCol = target.getAttribute('data-colum');
+        const dtoCell = new CellInformationDto({
+          indexRow,
+          indexCol,
+          cellTag: target,
+        });
 
         if (cellStatus === 'dead') {
           this.#GameBoardService.reviveCell(dtoCell);
@@ -105,6 +109,7 @@ class GameBoardDraw {
   #handlerClearBtn() {
     HtmlTagManager.getBtnClear().addEventListener('click', () => {
       try {
+        this.#drawStartButton();
         this.#stopGame();
         this.#GameBoardService.killAllCells();
       } catch (e) {

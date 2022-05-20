@@ -1,27 +1,11 @@
-class CellInformationDto {
-  #indexRow;
-
-  #indexCol;
-
-  #cellTag;
-
-  constructor(indexRow, indexCol, cellTag) {
-    this.#indexRow = indexRow;
-    this.#indexCol = indexCol;
-    this.#cellTag = cellTag;
-  }
-
-  get indexRow() {
-    return this.#indexRow;
-  }
-
-  get indexCol() {
-    return this.#indexCol;
-  }
-
-  get cellTag() {
-    return this.#cellTag;
-  }
+function CellInformationDto({
+  indexRow,
+  indexCol,
+  cellTag,
+}) {
+  this.indexRow = indexRow ?? null;
+  this.indexCol = indexCol ?? null;
+  this.cellTag = cellTag ?? null;
 }
 
 export default CellInformationDto;

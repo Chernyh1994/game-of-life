@@ -29,6 +29,10 @@ class HtmlTagManager {
   static getBtnRandom() {
     return document.getElementById('btn-random');
   }
+
+  static getTimer() {
+    return document.getElementById('timer');
+  }
 }
 
 export default HtmlTagManager;

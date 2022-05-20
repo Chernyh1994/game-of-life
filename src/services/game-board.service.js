@@ -7,9 +7,9 @@ class GameBoardService {
 
   #matrix;
 
-  constructor(DtoSizeGameBoard) {
-    this.#numberRows = DtoSizeGameBoard.numberRows;
-    this.#numberCols = DtoSizeGameBoard.numberCols;
+  constructor(GameSettingDto) {
+    this.#numberRows = GameSettingDto.numberRows;
+    this.#numberCols = GameSettingDto.numberCols;
   }
 
   createCellMatrix() {
@@ -43,7 +43,11 @@ class GameBoardService {
       for (let j = 0; j < this.#numberCols; j++) {
         const cell = document.querySelector(`[data-row="${i}"][data-colum="${j}"]`);
         const countNeighbors = this.#countNeighbors(i, j);
-        const dtoCell = new CellInformationDto(i, j, cell);
+        const dtoCell = new CellInformationDto({
+          indexRow: i,
+          indexCol: j,
+          cellTag: cell,
+        });
         // eslint-disable-next-line no-mixed-operators
         const isLife = countNeighbors < 2 || countNeighbors > 3 && this.#matrix[i][j] === 1;
         const isDead = countNeighbors === 3 && this.#matrix[i][j] === 0;
