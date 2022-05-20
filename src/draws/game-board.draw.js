@@ -1,4 +1,4 @@
-import HtmlTagManager from '../healpers/html-tag-manager';
+import HtmlTagManager from '../helpers/html-tag-manager';
 import CellInformationDto from '../dto/cell-information.dto';
 
 /**
