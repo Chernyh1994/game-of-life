@@ -58,10 +58,10 @@
     grid-column-end: 4;
     padding: 0 15px;
 }
-.game-score {
+.management-console {
     margin: 5px 0;
 }
-.game-score__title {
+.management-console__title {
     margin: 5px 0 auto;
     color: dimgray;
     font-family: cursive;
