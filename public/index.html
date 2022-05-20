@@ -4,19 +4,30 @@
         <link rel="stylesheet" href="styles/index.css">
         <meta charset="UTF-8">
         <script src="dist/bundle.js" defer></script>
-        <title>Life Game</title>
+        <title>The Game of Life.</title>
     </head>
     <body>
-        <main>
-            <div>
-                <h1>Life Game</h1>
+        <main class="container">
+            <div class="wrap-title">
+                <h1 class="title">The Game of Life.</h1>
             </div>
-            <div>
-                <div id="game-board">
-
-                </div>
-                <div id="control-panel">
-
+            <div class="board">
+                <div id="game-board" class="game-board"></div>
+                <div class="panel-board">
+                    <div class="management-console">
+                        <p class="management-console__title">Management console.</p>
+                    </div>
+                    <div class="btn-panel">
+                        <div class="wrap-btn">
+                            <button id="btn-start-stop" data-status="start" class="btn">Start</button>
+                        </div>
+                        <div class="wrap-btn">
+                            <button id="btn-clear" class="btn">Clear</button>
+                        </div>
+                        <div class="wrap-btn">
+                            <button id="btn-random" class="btn">Random</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
