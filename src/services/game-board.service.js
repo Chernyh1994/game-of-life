@@ -1,17 +1,47 @@
 import CellInformationDto from '../dto/cell-information.dto';
 
+/**
+ * GameBoardService class.
+ */
 class GameBoardService {
+  /**
+   * Number of game board rows.
+   *
+   * @access private
+   * @type number
+   */
   #numberRows;
 
+  /**
+   * Number of game board cols.
+   *
+   * @access private
+   * @type number
+   */
   #numberCols;
 
+  /**
+   * Cells matrix.
+   *
+   * @access private
+   * @type array
+   */
   #matrix;
 
+  /**
+   * @function Constructor.
+   * @constructor
+   */
   constructor(GameSettingDto) {
     this.#numberRows = GameSettingDto.numberRows;
     this.#numberCols = GameSettingDto.numberCols;
   }
 
+  /**
+   * @function Generate Cells matrix.
+   * @access public
+   * @return object
+   */
   createCellMatrix() {
     this.#matrix = new Array(this.#numberRows);
 
@@ -26,18 +56,35 @@ class GameBoardService {
     return { numberRows: this.#numberRows, numberCols: this.#numberCols };
   }
 
+  /**
+   * @function Change cell status to life.
+   * @access public
+   * @param dto:CellInformationDto
+   * @return void
+   */
   reviveCell(dto) {
     this.#matrix[dto.indexRow][dto.indexCol] = 1;
     dto.cellTag.setAttribute('data-cell', 'life');
     dto.cellTag.setAttribute('class', 'life');
   }
 
+  /**
+   * @function Change cell status to dead.
+   * @access public
+   * @param dto:CellInformationDto
+   * @return void
+   */
   killCell(dto) {
     this.#matrix[dto.indexRow][dto.indexCol] = 0;
     dto.cellTag.setAttribute('data-cell', 'dead');
     dto.cellTag.setAttribute('class', 'dead');
   }
 
+  /**
+   * @function For each cell of the matrix, check the status of life or death.
+   * @access public
+   * @return void
+   */
   startGame() {
     for (let i = 0; i < this.#numberRows; i++) {
       for (let j = 0; j < this.#numberCols; j++) {
@@ -63,6 +110,11 @@ class GameBoardService {
     }
   }
 
+  /**
+   * @function Change the status of all cells to dead.
+   * @access public
+   * @return void
+   */
   killAllCells() {
     for (let i = 0; i < this.#numberRows; i++) {
       for (let j = 0; j < this.#numberCols; j++) {
@@ -73,6 +125,11 @@ class GameBoardService {
     this.startGame();
   }
 
+  /**
+   * @function Change status of all cells randomly to dead or life.
+   * @access public
+   * @return void
+   */
   randomizeCells() {
     for (let i = 0; i < this.#numberRows; i++) {
       for (let j = 0; j < this.#numberCols; j++) {
@@ -88,6 +145,13 @@ class GameBoardService {
     this.startGame();
   }
 
+  /**
+   * @function Count the number of live cell neighbors.
+   * @access private
+   * @param row:number
+   * @param col:number
+   * @return number
+   */
   #countNeighbors(row, col) {
     let count = 0;
 
@@ -119,6 +183,13 @@ class GameBoardService {
     return count;
   }
 
+  /**
+   * @function Check cell is life.
+   * @access private
+   * @param row:number
+   * @param col:number
+   * @return number
+   */
   #isLife(row, col) {
     if (this.#matrix[row][col] === 1) {
       return 1;

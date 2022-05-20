@@ -5,14 +5,35 @@ import CellInformationDto from '../dto/cell-information.dto';
  * GameBoard class.
  */
 class GameBoardDraw {
+  /**
+   * GameBoardService dependency injection.
+   *
+   * @access private
+   * @type GameBoardService
+   */
   #GameBoardService;
 
+  /**
+   * Game interval ID.
+   *
+   * @access private
+   * @type number
+   */
   #gameIntervalId;
 
+  /**
+   * @function Constructor.
+   * @constructor
+   */
   constructor(GameBoardService) {
     this.#GameBoardService = GameBoardService;
   }
 
+  /**
+   * @function Initialisation Game.
+   * @access public
+   * @return void
+   */
   initGame() {
     this.#drawGameBoard();
     this.#handlerCell();
@@ -21,6 +42,12 @@ class GameBoardDraw {
     this.#handlerRandomBtn();
   }
 
+  /**
+   * @function Draw game board to HTML.
+   * @access private
+   * @return void
+   * @throws Error
+   */
   #drawGameBoard() {
     try {
       const { numberRows, numberCols } = this.#GameBoardService.createCellMatrix();
@@ -46,6 +73,12 @@ class GameBoardDraw {
     }
   }
 
+  /**
+   * @function Clicking on a handler cell.
+   * @access private
+   * @return void
+   * @throws Error
+   */
   #handlerCell() {
     HtmlTagManager.getBoardTag().addEventListener('click', (event) => {
       try {
@@ -72,6 +105,12 @@ class GameBoardDraw {
     });
   }
 
+  /**
+   * @function Clicking on a handler start-stop button.
+   * @access private
+   * @return void
+   * @throws Error
+   */
   #handlerStartStopBtn() {
     HtmlTagManager.getBtnStartStop().addEventListener('click', () => {
       try {
@@ -79,7 +118,7 @@ class GameBoardDraw {
 
         if (status === 'start') {
           this.#drawStopButton();
-          this.#gameIntervalId = setInterval(() => this.#GameBoardService.startGame(), 300);
+          this.#startGame();
         }
 
         if (status === 'stop') {
@@ -92,20 +131,50 @@ class GameBoardDraw {
     });
   }
 
+  /**
+   * @function Draw start button.
+   * @access private
+   * @return void
+   */
   #drawStartButton() {
     HtmlTagManager.getBtnStartStop().setAttribute('data-status', 'start');
     HtmlTagManager.getBtnStartStop().innerHTML = 'Start';
   }
 
+  /**
+   * @function Draw stop button.
+   * @access private
+   * @return void
+   */
   #drawStopButton() {
     HtmlTagManager.getBtnStartStop().setAttribute('data-status', 'stop');
     HtmlTagManager.getBtnStartStop().innerHTML = 'Stop';
   }
 
+  /**
+   * @function Start game.
+   * @access private
+   * @return void
+   */
+  #startGame() {
+    this.#gameIntervalId = setInterval(() => this.#GameBoardService.startGame(), 300);
+  }
+
+  /**
+   * @function Stop game.
+   * @access private
+   * @return void
+   */
   #stopGame() {
     clearInterval(this.#gameIntervalId);
   }
 
+  /**
+   * @function Clicking on a handler clear button.
+   * @access private
+   * @return void
+   * @throws Error
+   */
   #handlerClearBtn() {
     HtmlTagManager.getBtnClear().addEventListener('click', () => {
       try {
@@ -118,6 +187,12 @@ class GameBoardDraw {
     });
   }
 
+  /**
+   * @function Clicking on a handler random button.
+   * @access private
+   * @return void
+   * @throws Error
+   */
   #handlerRandomBtn() {
     HtmlTagManager.getBtnRandom().addEventListener('click', () => {
       try {
